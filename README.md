@@ -14,7 +14,7 @@ W oparciu o dostępne atrybuty zbuduj model, który pomoże oszacować, czy dana
 
 ## Projekt 3 - sieci konwolucyjne - klasyfikacja obrazów
 
-ym razem zadanie polega na stworzeniu klasyfikatora obrazków działającego na 50 klasach z różnymi przedmiotami/zwierzętami itp. Do dyspozycji mają Państwo zbiór treningowy podzielony na odpowiednie podfoldery z klasami oraz zbiór testowy - bez podziału. Zbiór treningowy jest przygotowany w taki sposób by można go było łatwo załadować za pomocą klasy torchvision.ImageFolder wywołując np:
+Tym razem zadanie polega na stworzeniu klasyfikatora obrazków działającego na 50 klasach z różnymi przedmiotami/zwierzętami itp. Do dyspozycji mają Państwo zbiór treningowy podzielony na odpowiednie podfoldery z klasami oraz zbiór testowy - bez podziału. Zbiór treningowy jest przygotowany w taki sposób by można go było łatwo załadować za pomocą klasy torchvision.ImageFolder wywołując np:
 trainset = ImageFolder("data/train/", transform=train_transform)
 Wówczas wszystkie przykłady zostaną przypisane do odpowiedniej klasy w zależności od tego w jakim podfolderze się znajdowały.
 Jako że dane są bardzo duże to umieściłem je na OneDrive:
@@ -26,11 +26,18 @@ Tym razem zadanie będzie polegało na stworzeniu modelu generatywnego który ge
 
 ## Projekt 5 - sieci sekwecyjne (LSTM) - klasyfikacja utworów (sekwencji) o różnych rozmiarach
 
-ewien słuchacz szkoły muzycznej ma w sobie niesamowity talent. Jednak przed jej ukończeniem wstrzymuje go jeden przedmiot - "Kompozytorzy muzyki klasycznej". Słuchacz ten, mając dość niepowodzeń w zdawaniu tego tematu, zwraca się do Was o pomoc.
+Pewien słuchacz szkoły muzycznej ma w sobie niesamowity talent. Jednak przed jej ukończeniem wstrzymuje go jeden przedmiot - "Kompozytorzy muzyki klasycznej". Słuchacz ten, mając dość niepowodzeń w zdawaniu tego tematu, zwraca się do Was o pomoc.
 
 Zadanie polega na stworzeniu modelu rekurencyjnego, który będzie przewidywał kompozytora danego utworu klasycznego w oparciu o jego zapis w formie sekwencji akordów. Akordy znormalizowane zostały do klucza C-dur lub a-moll, w zależności od skali utworu (durowa/molowa).
 Dane przygotowane są w postaci pickle (https://docs.python.org/3/library/pickle.html), w których znajduje się lista krotek z sekwencjami i odpowiadającymi im klasami (kompozytorami), odpowiednio: {0: 'bach', 1: 'beethoven', 2: 'debussy', 3: 'scarlatti', 4: 'victoria'}. Dane treningowe znajdują się w pliku train.pkl. W pliku test_no_target.pkl znajdują się testowe sekwencje, dla których predykcje mają Państwo przewidzieć.
 
 Uwaga, utwory mogą mieć różne długości. Do stworzenia batchy dla przykładów różnej długości proszę wykorzystać omówiony na zajęciach padding i trenować z wykorzystaniem spaddowanych tensorów lub spakowanych sekwencji (PackedSequence).
 
-## Projekt 6 - coming soon
+## Projekt 6 - NLP
+
+Wakacje są blisko, wszyscy już myślą o wyjazdach - ale jak tu dobrze ocenić hotel, żeby jak najbardziej się nim cieszyć?
+
+Zadanie polega na stworzeniu modelu, który będzie klasyfikował liczbę gwiazdek przyznanych hotelowi (rating, klasa = liczba_gwiazdek - 1) na podstawie recenzji, jaką otrzymał (review).
+Wszelkie chwyty dozwolone :) Mogą Państwo przewidywać klasy w oparciu o klasyczną metodę bag of words, inne metody reprezentacji dokumentów (np. TF-IDF), korzystać z embeddingów, gotowych modeli językowych itd. Do dyspozycji mają Państwo dane treningowe, oczekuję od Państwa pliku csv z wygenerowanymi predykcjami.
+Proszę  zwrócić uwagę na fakt, że jest to problem klasyfikacji wieloklasowej z mocno niezbalansowanym zbiorem danych!
+Proszę także Państwa o przetestowanie kilku (w domyśle, co najmniej dwóch) modeli do klasyfikacji - moga (ale nie muszą!) być to gotowe modele, najlepiej o różnych architekturach.
